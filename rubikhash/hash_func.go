@@ -16,25 +16,25 @@ type HashFunc struct {
 
 // RandomHashFunc creates a new hash function from a random
 // source given the number of bits to encode and the number
-// of passes to do over the bits.
+// of rounds to do over the bits.
 //
-// The passes argument should be at least 1, and the more
-// passes which are done, the more random the hash is.
-func RandomHashFunc(source rand.Source, bits, passes int) *HashFunc {
+// The rounds argument should be at least 1, and the more
+// rounds which are done, the more random the hash is.
+func RandomHashFunc(source rand.Source, bits, rounds int) *HashFunc {
 	rng := rand.New(source)
 	res := &HashFunc{
 		Bits:   bits,
-		Moves0: make([]gocube.Move, 0, bits*passes),
-		Moves1: make([]gocube.Move, 0, bits*passes),
+		Moves0: make([]gocube.Move, 0, bits*rounds),
+		Moves1: make([]gocube.Move, 0, bits*rounds),
 	}
-	for i := 0; i < bits*passes; i++ {
+	for i := 0; i < bits*rounds; i++ {
 		move0 := gocube.Move(rng.Intn(18))
 		move1 := gocube.Move(rng.Intn(17))
 		if move1 >= move0 {
 			move1 += 1
 		}
 		res.Moves0 = append(res.Moves0, move0)
-		res.Moves1 = append(res.Moves0, move1)
+		res.Moves1 = append(res.Moves1, move1)
 	}
 	return res
 }
@@ -52,6 +52,7 @@ func (h *HashFunc) HashExact(state *gocube.CubieCube, data []byte) {
 	}
 	for i, m0 := range h.Moves0 {
 		m1 := h.Moves1[i]
+		i = i % h.Bits
 		if data[i/8]&(1<<uint(i%8)) == 0 {
 			state.Move(m0)
 		} else {

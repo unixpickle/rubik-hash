@@ -1,2 +1,4 @@
-github.com/unixpickle/gocube v0.0.0-20211215011835-eda1b7968046 h1:0zC+PoIVaZMuBeWdEQQnBpsIvxDRBG8+If8rbo6bQDo=
-github.com/unixpickle/gocube v0.0.0-20211215011835-eda1b7968046/go.mod h1:uoE+D3GfPPTUUSiH3jySJuiUTbFakMEA09edWQf1sVs=
+github.com/unixpickle/essentials v1.3.0 h1:H258Z5Uo1pVzFjxD2rwFWzHPN3s0J0jLs5kuxTRSfCs=
+github.com/unixpickle/essentials v1.3.0/go.mod h1:dQ1idvqrgrDgub3mfckQm7osVPzT3u9rB6NK/LEhmtQ=
+github.com/unixpickle/gocube v0.1.1 h1:TbrX1KCpFNW7J9C4jWyjf/7BPr1YFKX7Eex+wvBJSHQ=
+github.com/unixpickle/gocube v0.1.1/go.mod h1:uoE+D3GfPPTUUSiH3jySJuiUTbFakMEA09edWQf1sVs=
